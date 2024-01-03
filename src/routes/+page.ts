@@ -1,3 +1,5 @@
+import { ExplorePublicationType, ExplorePublicationsOrderByType, LimitType, type PostFragment } from "@lens-protocol/client";
+import { lensClient } from "../lib/lensClient";
 
 export const ssr = true;
 export const csr = true;
@@ -5,7 +7,7 @@ export const prerender = true;
 
 type MainPageData = {
     streamed: {
-        publications: Promise<unknown[]>
+        publications: Promise<PostFragment[]>
     }
 }
 
@@ -16,7 +18,15 @@ export async function load(): Promise<MainPageData> {
         return {
             streamed: {
                 publications: new Promise((resolve) => {
-                    resolve([]);
+                    lensClient.explore.publications({
+                        limit: LimitType.Ten,
+                        where: {
+                            publicationTypes: [ExplorePublicationType.Post]
+                        },
+                        orderBy: ExplorePublicationsOrderByType.Latest
+                    }).then((publications) => {
+                        resolve(publications.items as PostFragment[]);
+                    }).catch(console.error);
                 })
             },
         };
