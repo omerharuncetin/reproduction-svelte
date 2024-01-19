@@ -43,16 +43,6 @@ const adapter = getAdapters(adapt);
 
 /** @type {import("@sveltejs/kit").Config} */
 const config = {
-	// preprocess: [
-	// 	preprocess({
-	// 		postcss: true,
-	// 		scss: {
-	// 			prependData: `@import 'src/styles/variables/index.scss';`,
-	// 			outputStyle: 'compressed',
-	// 		},
-	// 		preserve: ['ld+json'],
-	// 	}),
-	// ],
 	preprocess: vitePreprocess(),
 	kit: {
 		alias: {
@@ -75,71 +65,6 @@ const config = {
 		serviceWorker: {
 			register: false
 		}
-		//target: '#starter',
-		//ssr: true,
-		//amp: isAMP,
-		//hydrate: true,
-		// serviceWorker: {
-		// 	files: (resolve(__dirname, './src/service-worker')),
-		// 	register: true
-		// },
-		// typescript: {
-		// 	config: resolve(__dirname, './tsconfig.json')
-		// },
-		// prerender: {
-		// 	crawl: false,
-		// 	enabled: true,
-		// 	onError: 'fail',
-		// 	entries: [
-		// 		'/',
-		// 		'/topics',
-		// 		'/topics/[slug]',
-		// 		'/profile',
-		// 		'/profile/[slug]',
-		// 		'/posts',
-		// 		'/posts/[slug]',
-		// 		'/earnings',
-		// 		'/convert',
-		// 		'/mint',
-		// 		'/about',
-		// 		'/settings',
-		// 	],
-		// },
-		// vite: () => ({
-		// 	resolve: {
-		// 		alias: {
-		// 			$stores: resolve(__dirname, './src/stores'),
-		// 			$components: resolve(__dirname, './src/lib/shared/components'),
-		// 			$ui: resolve(__dirname, './src/lib/shared/ui'),
-		// 			$layouts: resolve(__dirname, './src/lib/layouts'),
-		// 			$shared: resolve(__dirname, './src/lib/shared'),
-		// 			$models: resolve(__dirname, './src/lib/models'),
-		// 			$data: resolve(__dirname, './src/lib/data'),
-		// 			$core: resolve(__dirname, './src/lib/core'),
-		// 			$utils: resolve(__dirname, './src/lib/utils'),
-		// 			$environment: resolve(__dirname, './src/environments'),
-		// 			$src: resolve(__dirname, './src'),
-		// 		},
-		// 	},
-		// 	build: {
-		// 		rollupOptions: {
-		// 			output: {
-		// 				manualChunks: undefined,
-		// 			},
-		// 		},
-		// 	},
-		// 	define: {
-		// 		"globalThis.process.env.NODE_ENV": `'${process.env.NODE_ENV}'`
-		// 	},
-		// 	envPrefix: ['VITE_', 'SVELTEKIT_STARTER_'],
-		// 	plugins: [imagetools({ force: true }),],
-		// 	optimizeDeps: {
-		// 		include: ['ethers'],
-		// 	},
-		// 	ssr: {
-		// 		external: ['is-buffer', '@milkdown/*', 'extend', 'debug', 'fs', '@toast-ui/*', 'lodash'],
-		// 	},
-		// }),
 	},
 };
 
